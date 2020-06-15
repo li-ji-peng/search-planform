@@ -143,6 +143,7 @@ public class MySQL {
             StringBuilder values=new StringBuilder();
             insert.append("  <insert id=\"add"+className+"\">\n");
             insert.append("     insert into "+tableName+"\n     (");
+
             // 展开结果集数据库
             while(rs.next()){
                 // 通过字段检索

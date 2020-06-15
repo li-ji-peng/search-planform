@@ -22,4 +22,38 @@
      values(
      #{entity.name},#{entity.enName},#{entity.author},#{entity.imgurl},#{entity.discription},#{entity.createTime},#{entity.creator},#{entity.updateTime},#{entity.status},#{entity.commentNum},#{entity.price},#{entity.category})
   </insert>
+
+   <select id="getPageList" resultMap="ReadBookPd">
+  	select
+	  	id,
+	  	`name`,
+	  	en_name enName,
+	  	author,
+	  	imgurl,
+	  	create_time createTime,
+	  	creator creator,
+	  	category category,
+	  	update_time updateTime,
+	  	`status` status,
+	  	discription discription,
+	  	price price,
+	  	comment_num commentNum
+  	 from read_book_pd WHERE id >= (select id from read_book_pd limit #{start}, 1) limit #{size}
+  </select>
+
+   <select id="buildESQuery" resultType="java.util.Map">
+  select
+	  	id,
+	  	`name`,
+	  	en_name enName,
+	  	author,
+	  	imgurl,
+	  	creator creator,
+	  	category category,
+	  	`status` status,
+	  	discription discription,
+	  	price price,
+	  	comment_num commentNum
+  	 from read_book_pd WHERE id = #{id}
+  </select>
 </mapper>

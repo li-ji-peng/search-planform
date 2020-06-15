@@ -14,7 +14,7 @@ import java.util.ArrayList;
 @Configuration
 public class EsConfiguration {
     // 集群地址，多个用,隔开
-    private static String hosts = "192.168.147.101,192.168.147.102,192.168.147.103";
+    private static String hosts = "111.230.135.149:9200,111.230.135.149:19200,111.230.135.149:29200";
     // 使用的端口号
     private static int port = 9200;
     // 使用的协议
@@ -35,7 +35,8 @@ public class EsConfiguration {
         hostList = new ArrayList<>();
         String[] hostArray = hosts.split(",");
         for (String host : hostArray) {
-            hostList.add(new HttpHost(host, port, schema));
+            String []str=host.split(":");
+            hostList.add(new HttpHost(str[0], Integer.parseInt(str[1]), schema));
         }
     }
 

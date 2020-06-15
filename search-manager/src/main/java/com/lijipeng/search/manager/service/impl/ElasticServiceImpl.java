@@ -21,13 +21,14 @@ public class ElasticServiceImpl implements ElasticService {
     private RestHighLevelClient client;
 
     @Override
-    public void bulkAdd(String index_name, String index_type, Map<String, Object> dataMap)
+    public void bulkAdd(String index_name, String index_type, Map<Integer, ? extends Object> dataMap)
             throws IOException {
         BulkRequest bulkAddRequest = new BulkRequest();
-        for (String key:dataMap.keySet()) {
-            IndexRequest indexRequest = new IndexRequest(index_name, index_type, key);
+        for (Integer key:dataMap.keySet()) {
+            IndexRequest indexRequest = new IndexRequest(index_name, index_type, (key.toString()));
             indexRequest.source(JSON.toJSONString(dataMap.get(key)), XContentType.JSON);
             bulkAddRequest.add(indexRequest);
+            System.out.println(JSON.toJSONString(dataMap.get(key)));
         }
         BulkResponse bulkAddResponse = client.bulk(bulkAddRequest, RequestOptions.DEFAULT);
         log.info("bulkAddResponse: " + JSON.toJSONString(bulkAddResponse));

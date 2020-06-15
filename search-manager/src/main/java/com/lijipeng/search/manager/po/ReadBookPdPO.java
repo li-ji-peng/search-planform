@@ -5,12 +5,21 @@ import java.util.*;
 
 import lombok.Getter;
 import lombok.Setter;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 @Setter
 @Getter
+@Table(name = "read_book_pd")
 public class ReadBookPdPO{
     /**
      * 
      */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     /**
      * 

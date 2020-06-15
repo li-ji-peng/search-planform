@@ -1,7 +1,6 @@
 package com.lijipeng.search.manager.service;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Map;
 
 public interface ElasticService {
@@ -12,5 +11,5 @@ public interface ElasticService {
      * @param dataMap
      * @throws IOException
      */
-    void bulkAdd(String index_name, String index_type, Map<String, Object> dataMap) throws IOException;
+    void bulkAdd(String index_name, String index_type, Map<Integer, ? extends Object> dataMap) throws IOException;
 }
