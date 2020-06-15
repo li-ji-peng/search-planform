@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lijipeng.search.manager.dao.ReadBookPdMapper">
+  <resultMap id="ReadBookPd" type="com.lijipeng.search.manager.po.ReadBookPdPO">
+     <id column="id" jdbcType="INTEGER" property="id" /> 
+     <result column="name" jdbcType="VARCHAR" property="name" /> 
+     <result column="en_name" jdbcType="VARCHAR" property="enName" /> 
+     <result column="author" jdbcType="VARCHAR" property="author" /> 
+     <result column="imgurl" jdbcType="VARCHAR" property="imgurl" /> 
+     <result column="discription" jdbcType="LONGVARCHAR" property="discription" /> 
+     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" /> 
+     <result column="creator" jdbcType="INTEGER" property="creator" /> 
+     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" /> 
+     <result column="status" jdbcType="INTEGER" property="status" /> 
+     <result column="comment_num" jdbcType="INTEGER" property="commentNum" /> 
+     <result column="price" jdbcType="INTEGER" property="price" /> 
+     <result column="category" jdbcType="VARCHAR" property="category" /> 
+  </resultMap>
+  <insert id="addReadBookPd">
+     insert into read_book_pd
+     (name,en_name,author,imgurl,discription,create_time,creator,update_time,status,comment_num,price,category)
+     values(
+     #{entity.name},#{entity.enName},#{entity.author},#{entity.imgurl},#{entity.discription},#{entity.createTime},#{entity.creator},#{entity.updateTime},#{entity.status},#{entity.commentNum},#{entity.price},#{entity.category})
+  </insert>
+</mapper>
